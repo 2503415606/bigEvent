@@ -103,8 +103,8 @@ $(function () {
         // 可以通过 first 的值，来判断是通过哪种方式，触发的 jump 回调
         // 如果 first 的值为 true，证明是方式2触发的
         // 否则就是方式1触发的
-        // console.log(first)
-        // console.log(obj.curr)
+        console.log(first)
+        console.log(obj.curr)
         // 把最新的页码值，赋值到 q 这个查询参数对象中
         q.pagenum = obj.curr
         // 把最新的条目数，赋值到 q 这个查询参数对象的 pagesize 属性中
@@ -119,12 +119,11 @@ $(function () {
   }
 
   // 通过代理的形式，为删除按钮绑定点击事件处理函数
-  $('tbody').on('click', '.btn-delete', function (e) {
+  $('tbody').on('click', '.btn-delete', function () {
     // 获取删除按钮的个数
     var len = $('.btn-delete').length
-    // console.log(len)
+    console.log(len)
     // 获取到文章的 id
-    // console.log($(this).attr('data-id'))
     var id = $(this).attr('data-id')
     // 询问用户是否要删除数据
     layer.confirm('确认删除?', {
@@ -133,7 +132,7 @@ $(function () {
     }, function (index) {
       $.ajax({
         method: 'GET',
-        url: `/my/article/delete/${id}`,
+        url: '/my/article/delete/' + id,
         success: function (res) {
           if (res.status !== 0) {
             return layer.msg('删除文章失败！')
@@ -156,7 +155,6 @@ $(function () {
   })
 
   $('tbody').on('click', '.btnEditArticle', function (e) {
-    console.log($(this).attr('data-id'))
     var id = $(this).attr('data-id')
     location.href = `./art_pub.html?id=${id}`
   })

@@ -29,7 +29,7 @@ $(function () {
   var $image = $('#image')
 
   // 2. 裁剪选项
-  const options = {
+  var options = {
     aspectRatio: 400 / 280,
     preview: '.img-preview'
   }
@@ -113,7 +113,7 @@ $(function () {
         }
         layer.msg('发布文章成功！')
         window.parent.setNavSelected('#article-list', '#article-pub')
-        console.log(window.parent)
+        console.log(window.parent);
         // 发布文章成功后，跳转到文章列表页面
         location.href = '../article/art_list.html'
       }
